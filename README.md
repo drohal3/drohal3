@@ -24,7 +24,7 @@ Data visualisation web application.
 
 ***
 
-**FastAPI, React, AWS, Terraform**
+**FastAPI, React, MaterialUI, Recharts, AWS, Terraform**
 
 ### AQrpi
 [ _source code presented personally on request - **private repository**_ ]
@@ -39,5 +39,6 @@ The software reads data from and controls hardware components using SPI, I2C, GP
 
 **Python, IoT, Redis, Docker, AWS**
 
-### AQdatahub
-...
+[//]: # (### AQdatahub)
+
+[//]: # (...)
