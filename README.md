@@ -1,8 +1,12 @@
 # Dominik Rohal Portfolio
+
 ***
+
 LinkedIn: https://www.linkedin.com/in/dominik-rohal/
 Email: [rohal.dominik.123@gmail.com](mailto:rohal.dominik.123@gmail.com?subject=[Portfolio]%20your_subject)
+
 ***
+
 ## IdealAQ
 A range of projects done for a university spin off [IDealAQ](https://idealaq.com/).
 
@@ -17,7 +21,9 @@ The thesis focused on the problems related to using the right architecture for p
 [ [more](./projects/AQvis.md) ]
 
 Data visualisation web application.
+
 ***
+
 **FastAPI, React, AWS, Terraform**
 
 ### AQrpi
@@ -28,7 +34,9 @@ Hardware control software for a custom and patented **condensation particle coun
 The software reads data from and controls hardware components using SPI, I2C, GPIO and serial interface.
 
 > The software uses various design patterns to provide flexibility in the use of different hardware components from different manufacturers. Change of the component in the most cases requires only change of a configuration file in YAML format.
+
 ***
+
 **Python, IoT, Redis, Docker, AWS**
 
 ### AQdatahub
