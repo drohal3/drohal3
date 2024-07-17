@@ -33,7 +33,16 @@ This solution utilizes [dockerdeploy.cloud](https://dockerdeploy.cloud/) service
 It is used temporarily as a cost-efficient solution for the project demonstration purposes.
 
 ## Measurement data
+[TODO: [Github repository]()]
+
 The measurement data is published by devices as MQTT messages.
 Usually, each device published data once a second. The data is handled by IoT Core AWS service, processed and forwarded to temporary or permanent storage.
 
+## Measurement simulation
+[[Github repository](https://github.com/drohal3/aws-timeseries-experiment/tree/main/device_simulation)]
 
+For the demonstration and testing purposes a python script using [asyncio](https://docs.python.org/3/library/asyncio.html) to simulate X devices running and publishing data concurrently was created and used.
+
+## Related projects
+- **AQrpi**: Hardware control software for Raspberry Pi. Uses YML config file tha describes used hardware components and based on it reads and calculates measurement data. The components usually use I2C, SPI and serial interfaces.
+- 
