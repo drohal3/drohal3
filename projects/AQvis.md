@@ -1,33 +1,48 @@
 # AQvis
-Data visualisation web app for IdealAQ.
+
+Sensor data visualisation web app for [IdealAQ](https://idealaq.com/).
+
 
 ## Frontend
 [ [GitHub repository](https://github.com/drohal3/AQvis-frontend) ]
 
 The frontend is implemented in ReactJS with MaterialUi. The data is visualised in plots provided by [Recharts](https://recharts.org/en-US/).
 
-[//]: # (**Tools:**</br>)
-
-[//]: # ([Vite]&#40;https://vitejs.dev/&#41; build tool </br>)
-
 
 ## Backend
 [ [GitHub repository](https://github.com/drohal3/AQvis-backend) ]
 
 The backend is implemented in FastAPI. It provides a simple API handling HTTP requests. Although, GraphQL can be added later if needed.
-The data related to the website (user and organisation data) is stored in MongoDB or Amazon DocumentDB. The measurement data is queried from their dedicated storage in AWS. In the early stages, it is DynamoDB. For later, infrastructure utilizing Kinesis Data Streams, Kinesis Firehose and S3 or alternatively storage in time series specialised database Timestream is ready to be provisioned using Terraform and measurement data storage transferred there.
+The data related to the website (user and organisation data) is stored in MongoDB or Amazon DocumentDB. 
+The measurement data is queried from their dedicated storage in AWS. 
+In the early stages, it is DynamoDB. 
+For later, infrastructure utilizing Kinesis Data Streams, Kinesis Firehose and S3 or alternatively storage in time series specialised database Timestream is ready to be provisioned using Terraform.
 
 ## Deployment
 Both, frontend and backend apps are deployed using the same strategy with different steps in their deployment pipelines owing to the fact they use different technology stacks.
-The deployment pipelines are defined using GitHub actions. In the pipelines, the linting is checked, tests are run, docker images are built and published to image repository (AWS ECR and/or Docker Hub). After a successful push to an image repository, a notification is sent to a Discord channel.
+The deployment pipelines are defined using GitHub actions. In the pipelines, the linting is checked, tests are run, docker images are built and published to image repository (AWS ECR and/or Docker Hub). After a successful push to an image repository, the action triggers notification in a Discord channel.
+
+The deployment pipeline also triggers a new deployment in AWS ECS with the newest image version/tag (disabled for now).
+
 
 ### AWS solution
 [[Github repository](https://github.com/drohal3/AQvis-infra)]
 
-The deployment pipeline also contains parts to trigger a new deployment in AWS ECS with the newest image version/tag.
-The applications are running in the 
+The application is running in an ECS cluster with Fargate. The task definition defines three tasks:
+- frontend app
+- backend app
+- nginx
 
-> **Note:** this solution was put on hold due to its unnecessary complexity and high operational costs. A simpler and more cost-efficient solution (see below) was chosen for time being.
+The nginx is used as a reverse proxy. It routes traffic with path starting with */api/* to the backend and to the frontend otherwise.
+
+A custom nginx image ([Github repository](https://github.com/drohal3/AQvis-nginx)) is used for this purpose. The custom repository simplifies defining nginx.conf file.
+
+**Problem:** The frontend app requires domain or IP address of the backend. 
+However, the public IP address is not static, and it changes every time the application is deployed. Hence, at the time the frontend app is started, with the current minimal set up the public IP address is not known. 
+The possible solution utilizes load balancer to assign a static IP address. 
+However, for this project a more light-weight and cost-efficient solution is needed.
+
+> **Note:** this solution was put on hold due to its unnecessary high complexity and operational costs. A simpler and more cost-efficient solution (see below) was chosen for time being.
 
 ### Dockerdeploy solution
 This solution utilizes [dockerdeploy.cloud](https://dockerdeploy.cloud/) service to host the backend and frontend applications. 
