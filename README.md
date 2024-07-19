@@ -1,4 +1,4 @@
-# Dominik Rohal Portfolio
+# Projects
 
 ***
 
