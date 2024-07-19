@@ -1,8 +1,8 @@
-# Projects
+# Dominik Rohal
 
 ***
 
-- LinkedIn: https://www.linkedin.com/in/dominik-rohal/
+- LinkedIn: [https://www.linkedin.com/in/dominik-rohal/](https://www.linkedin.com/in/dominik-rohal/)
 - Email: [rohal.dominik.123@gmail.com](mailto:rohal.dominik.123@gmail.com?subject=[Portfolio]%20your_subject)
 
 ***
