@@ -49,10 +49,16 @@ This solution utilizes [dockerdeploy.cloud](https://dockerdeploy.cloud/) service
 It is used temporarily as a cost-efficient solution for the project demonstration purposes.
 
 ## Measurement data
-[TODO: [Github repository]()]
+[[Github repository](https://github.com/drohal3/AQinfra-data/tree/dynamo)]
 
 The measurement data is published by devices as MQTT messages.
 Usually, each device published data once a second. The data is handled by IoT Core AWS service, processed and forwarded to temporary or permanent storage.
+
+There are three strategies of data processing considered and analyzed. They are pictured in the picture below.
+
+![data storage options](../assets/img/data_handling.jpeg)
+
+For demonstrating purposes of this project, DynamoDB is used. However, the infrastructure for the other options can be also found in the linked GitHub repository.
 
 ## Measurement simulation
 [[Github repository](https://github.com/drohal3/aws-timeseries-experiment/tree/main/device_simulation)]
@@ -60,4 +66,4 @@ Usually, each device published data once a second. The data is handled by IoT Co
 For the demonstration and testing purposes a python script using [asyncio](https://docs.python.org/3/library/asyncio.html) to simulate X devices running and publishing data concurrently was created and used.
 
 ## Related projects
-- **AQrpi**: (TODO: link) Hardware control software for Raspberry Pi. Uses YML config file tha describes used hardware components and based on it reads and calculates measurement data. The components usually use I2C, SPI and serial interfaces.
+- **AQrpi**: Hardware control software for Raspberry Pi. Uses YML config file tha describes used hardware components and based on it reads and calculates measurement data. The components usually use I2C, SPI and serial interfaces.
