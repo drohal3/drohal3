@@ -1,5 +1,5 @@
 # AQvis
-> Demonstration: https://yantdqyzzn.w-2.dockerdeploy.cloud/
+**Demonstration: https://yantdqyzzn.w-2.dockerdeploy.cloud/**
 
 Sensor data visualisation web app for [IdealAQ](https://idealaq.com/).
 
